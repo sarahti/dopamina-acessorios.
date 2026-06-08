@@ -1,0 +1,418 @@
+/* --- PALETA CORES: ROSÊ & CREME --- */
+:root {
+    --bg-creme:  #f5efe6;        /* Fundo creme suave aconchegante */
+    --bg-card: #ffffff;
+    --bg-areia: #ebdcd5;        /* Ajustado levemente para combinar com o novo fundo */
+    --rose-accent: #d49a91;     
+    --rose-hover: #a86e64;      
+    --rose-light: #f7ebe8;      
+    --text-main: #332a28;       
+    --text-muted: #7a6e6b;
+    --border-color: #ebdcd5;    
+    --danger: #d9534f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-creme);
+    color: var(--text-main);
+}
+
+/* --- BARRA DE SEGURANÇA --- */
+.security-bar {
+    background-color: var(--text-main);
+    color: var(--bg-creme);
+    padding: 6px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+}
+
+.panic-btn {
+    background: transparent;
+    color: var(--rose-accent);
+    border: 1px solid var(--rose-accent);
+    padding: 3px 10px;
+    font-size: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.panic-btn:hover {
+    background-color: var(--danger);
+    color: white;
+    border-color: var(--danger);
+}
+
+/* --- CABEÇALHO --- */
+.main-header {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.brand-title {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: var(--rose-accent); /* Mudou para a cor rosê */
+    text-align: center;        /* Centraliza o texto */
+    width: 100%;               /* Garante que ele ocupe toda a largura para alinhar no meio */
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icon, .social-icon-wa {
+    text-decoration: none;
+    padding: 8px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.social-icon {
+    background-color: var(--rose-light);
+    color: var(--rose-accent);
+}
+
+.social-icon-wa {
+    background-color: #e6f7ed;
+    color: #25d366;
+}
+
+/* --- NAVEGAÇÃO / FILTROS --- */
+.categories-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 8px 18px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.2s;
+}
+
+.category-btn.active, .category-btn:hover {
+    background-color: var(--rose-accent);
+    color: white;
+    border-color: var(--rose-accent);
+}
+
+/* --- CONTAINER DA LOJA (LADO A LADO) --- */
+.store-container {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 25px;
+    padding: 0 20px 40px 20px;
+}
+
+/* GRID DE PRODUTOS */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* CARD DO PRODUTO */
+.product-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-img {
+    width: 100%;
+    height: 280px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    transition: background-image 0.3s ease;
+}
+
+.tag-artesanal {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--rose-accent);
+    font-size: 10px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.photo-counter {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 10px;
+    padding: 3px 6px;
+    border-radius: 3px;
+}
+
+.product-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 8px;
+}
+
+.product-title {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.product-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--rose-accent);
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    background-color: var(--rose-accent);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--rose-hover);
+}
+
+/* --- CARRINHO FIXO NA DIREITA --- */
+.cart-container {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--rose-light);
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+}
+
+.cart-header h2 {
+    font-size: 16px;
+}
+
+.cart-badge {
+    background-color: var(--rose-accent);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+.cart-items {
+    max-height: 320px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.empty-cart {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 20px 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 13px;
+}
+
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cart-item-qty {
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.remove-btn:hover {
+    color: var(--danger);
+}
+
+.cart-footer {
+    border-top: 2px solid var(--rose-light);
+    padding-top: 15px;
+}
+
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.checkout-btn {
+    width: 100%;
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.checkout-btn:hover {
+    background-color: #1ebd58;
+}
+
+/* --- SEÇÃO QUEM SOU EU --- */
+.about-section {
+    max-width: 1250px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.about-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.about-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-text h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.about-text p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* --- RODAPÉ --- */
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--text-main);
+    color: var(--bg-creme);
+    font-size: 12px;
+    margin-top: 40px;
+}
+
+.footer-secure {
+    margin-top: 8px;
+}
+
+.footer-secure a {
+    color: var(--rose-accent);
+    text-decoration: none;
+}
+
+/* Responsividade Básica */
+@media (max-width: 900px) {
+    .store-container {
+        grid-template-columns: 1fr;
+    }
+    .cart-container {
+        position: static;
+    }
+    .about-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}

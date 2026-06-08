@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dopamina Acessórios</title>
+    <!-- Ícones para Redes Sociais e Carrinho -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Barra de Segurança Discreta -->
+    <div class="security-bar">
+        <span><i class="fa-solid fa-shield-halved"></i> Ambiente Seguro (Aperte 'ESC' duas vezes para Saída Rápida)</span>
+        <button class="panic-btn" onclick="quickExit()">Encerrar Sessão</button>
+    </div>
+
+    <!-- Cabeçalho Principal -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand-title">DOPAMINA ACESSÓRIOS</div>
+            
+            <!-- Links das Redes Sociais -->
+            <div class="social-links">
+                <a href="https://instagram.com/seu_usuario" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://wa.me/5500999999999" target="_blank" class="social-icon-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Filtros por Categoria (Navegação Rápida) -->
+    <nav class="categories-nav">
+        <button class="category-btn active" onclick="filterCategory('todos')">Todos os Produtos</button>
+        <button class="category-btn" onclick="filterCategory('croche')">Crochê & Mesa Posta</button>
+        <button class="category-btn" onclick="filterCategory('maternidade')">Maternidade & Bordados</button>
+        <button class="category-btn" onclick="filterCategory('ecobag')">Ecobags</button>
+    </nav>
+
+    <!-- Layout de Duas Colunas (Como estava antes, excelente para usabilidade) -->
+    <div class="store-container">
+        
+        <!-- Grid de Produtos -->
+        <main class="products-grid" id="productCatalog">
+            <!-- Os produtos serão injetados aqui via JS -->
+        </main>
+
+        <!-- Carrinho de Compras Sempre Visível na Direita -->
+        <aside class="cart-container">
+            <div class="cart-header">
+                <h2><i class="fa-solid fa-bag-shopping"></i> Seu Carrinho</h2>
+                <span class="cart-badge" id="cartCount">0</span>
+            </div>
+            
+            <div class="cart-items" id="cartItems">
+                <p class="empty-cart">Seu carrinho está vazio.</p>
+            </div>
+            
+            <div class="cart-footer">
+                <div class="cart-total-row">
+                    <span>Total:</span>
+                    <span id="cartTotal">R$ 0,00</span>
+                </div>
+                <button class="checkout-btn" onclick="sendToWhatsapp()">
+                    <i class="fa-brands fa-whatsapp"></i> Enviar Pedido via WhatsApp
+                </button>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- SEÇÃO INFORMATIVA: QUEM SOU EU (Fica elegante no final, sem atrapalhar a compra) -->
+    <section class="about-section">
+        <div class="about-card">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1610483178766-8092dccbf960?w=500&auto=format&fit=crop&q=80" alt="Ateliê">
+            </div>
+            <div class="about-text">
+                <h3>O Coração por Trás dos Nós ✨</h3>
+                <p>Seja bem-vinda à Dopamina Acessórios. Cada peça nasce de um processo calmo, paciente e feito 100% à mão. Nosso objetivo é trazer o aconchego, a textura e o afeto do artesanato premium direto para o seu estilo e para a sua casa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Dopamina Acessórios. Todos os direitos reservados.</p>
+        <div class="footer-secure">
+            <a href="https://www.gov.br/mulheres/pt-br/acesso-a-informacao/acoes-e-programas/ligue-180" target="_blank"><i class="fa-solid fa-phone"></i> Ligue 180</a> | 
+            <a href="https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm" target="_blank">Lei Maria da Penha</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
