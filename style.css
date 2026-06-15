@@ -1,17 +1,3 @@
-/* --- PALETA CORES: ROSÊ & CREME --- */
-:root {
-    --bg-creme:  #f5efe6;        /* Fundo creme suave aconchegante */
-    --bg-card: #ffffff;
-    --bg-areia: #ebdcd5;        /* Ajustado levemente para combinar com o novo fundo */
-    --rose-accent: #d49a91;     
-    --rose-hover: #a86e64;      
-    --rose-light: #f7ebe8;      
-    --text-main: #332a28;       
-    --text-muted: #7a6e6b;
-    --border-color: #ebdcd5;    
-    --danger: #d9534f;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -19,400 +5,411 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* Fundo geral do site em um Creme Suave e Sofisticado */
 body {
-    background-color: var(--bg-creme);
-    color: var(--text-main);
+    background-color: #FDF9F3; 
+    color: #4A3B32; /* Marrom escuro suave para contrastar perfeitamente com o creme */
 }
 
-/* --- BARRA DE SEGURANÇA --- */
-.security-bar {
-    background-color: var(--text-main);
-    color: var(--bg-creme);
-    padding: 6px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Barra de segurança discretamente integrada à paleta */
+.barra-seguranca {
+    background-color: #4A3B32;
+    padding: 8px 15px;
+    text-align: right;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.dica-seguranca {
+    color: #D9C3B0;
     font-size: 11px;
+    margin-right: 15px;
 }
 
-.panic-btn {
-    background: transparent;
-    color: var(--rose-accent);
-    border: 1px solid var(--rose-accent);
-    padding: 3px 10px;
-    font-size: 10px;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-.panic-btn:hover {
-    background-color: var(--danger);
+#btn-saida-rapida {
+    background-color: #D4A3A1; /* Rosê queimado */
     color: white;
-    border-color: var(--danger);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-/* --- CABEÇALHO --- */
-.main-header {
-    background-color: var(--bg-card);
-    border-bottom: 1px solid var(--border-color);
-    padding: 20px;
+#botao-panico-flutuante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background-color: #4A3B32;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    cursor: pointer;
 }
 
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
+/* Cabeçalho usando um fundo Rosê Claro e delicado */
+header {
+    background-color: #F7ECE4; 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    padding: 15px 5%;
+    box-shadow: 0 2px 5px rgba(74, 59, 50, 0.05);
+}
+
+.logo h1 {
+    color: #C58380; /* Tom Rosê principal da marca */
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    font-size: 11px;
+    color: #8C7364;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
     gap: 15px;
 }
 
-.brand-title {
-    font-size: 26px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    color: var(--rose-accent); /* Mudou para a cor rosê */
-    text-align: center;        /* Centraliza o texto */
-    width: 100%;               /* Garante que ele ocupe toda a largura para alinhar no meio */
-}
-
-.social-links {
-    display: flex;
-    gap: 12px;
-}
-
-.social-icon, .social-icon-wa {
+nav a {
     text-decoration: none;
-    padding: 8px 15px;
-    font-size: 13px;
-    font-weight: 600;
-    border-radius: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    color: #6E5A4E;
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.2s;
 }
 
-.social-icon {
-    background-color: var(--rose-light);
-    color: var(--rose-accent);
+nav a:hover {
+    color: #C58380;
 }
 
-.social-icon-wa {
-    background-color: #e6f7ed;
-    color: #25d366;
-}
-
-/* --- NAVEGAÇÃO / FILTROS --- */
-.categories-nav {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-    flex-wrap: wrap;
-}
-
-.category-btn {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    color: var(--text-muted);
-    padding: 8px 18px;
-    font-size: 13px;
-    cursor: pointer;
-    border-radius: 20px;
-    transition: all 0.2s;
-}
-
-.category-btn.active, .category-btn:hover {
-    background-color: var(--rose-accent);
-    color: white;
-    border-color: var(--rose-accent);
-}
-
-/* --- CONTAINER DA LOJA (LADO A LADO) --- */
-.store-container {
-    max-width: 1250px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 360px;
-    gap: 25px;
-    padding: 0 20px 40px 20px;
-}
-
-/* GRID DE PRODUTOS */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
-}
-
-/* CARD DO PRODUTO */
-.product-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.product-img {
-    width: 100%;
-    height: 280px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    transition: background-image 0.3s ease;
-}
-
-.tag-artesanal {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: var(--rose-accent);
-    font-size: 10px;
+.carrinho-menu {
+    color: #C58380;
     font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 4px;
 }
 
-.photo-counter {
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    font-size: 10px;
-    padding: 3px 6px;
-    border-radius: 3px;
-}
-
-.product-info {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    gap: 8px;
-}
-
-.product-title {
-    font-size: 15px;
-    font-weight: 600;
-}
-
-.product-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.4;
-    flex-grow: 1;
-}
-
-.product-price {
-    font-size: 16px;
-    font-weight: bold;
-    color: var(--rose-accent);
-}
-
-.add-to-cart-btn {
-    width: 100%;
-    background-color: var(--rose-accent);
-    color: white;
-    border: none;
-    padding: 10px;
-    font-weight: 600;
-    font-size: 13px;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.2s;
-}
-
-.add-to-cart-btn:hover {
-    background-color: var(--rose-hover);
-}
-
-/* --- CARRINHO FIXO NA DIREITA --- */
-.cart-container {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px;
-    height: fit-content;
-    position: sticky;
-    top: 20px;
-}
-
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid var(--rose-light);
-    padding-bottom: 12px;
-    margin-bottom: 15px;
-}
-
-.cart-header h2 {
-    font-size: 16px;
-}
-
-.cart-badge {
-    background-color: var(--rose-accent);
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 3px 8px;
-    border-radius: 10px;
-}
-
-.cart-items {
-    max-height: 320px;
-    overflow-y: auto;
-    margin-bottom: 15px;
-}
-
-.empty-cart {
-    font-size: 13px;
-    color: var(--text-muted);
+/* Banner com degradê suave do Creme para o Rosê */
+.banner {
+    background: linear-gradient(135deg, #FDF9F3, #F5DFDB);
+    padding: 60px 5%;
     text-align: center;
-    padding: 20px 0;
 }
 
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 13px;
-}
-
-.cart-item-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.cart-item-qty {
-    color: var(--text-muted);
-    font-size: 11px;
-}
-
-.remove-btn {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.remove-btn:hover {
-    color: var(--danger);
-}
-
-.cart-footer {
-    border-top: 2px solid var(--rose-light);
-    padding-top: 15px;
-}
-
-.cart-total-row {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    font-size: 15px;
-    margin-bottom: 15px;
-}
-
-.checkout-btn {
-    width: 100%;
-    background-color: #25d366;
-    color: white;
-    border: none;
-    padding: 12px;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.checkout-btn:hover {
-    background-color: #1ebd58;
-}
-
-/* --- SEÇÃO QUEM SOU EU --- */
-.about-section {
-    max-width: 1250px;
-    margin: 30px auto;
-    padding: 0 20px;
-}
-
-.about-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.about-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.about-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.about-text h3 {
-    font-size: 16px;
+.banner-conteudo h2 {
+    font-size: 26px;
+    color: #4A3B32;
     margin-bottom: 8px;
 }
 
-.about-text p {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.6;
+.banner-conteudo p {
+    font-size: 14px;
+    color: #6E5A4E;
+    margin-bottom: 20px;
 }
 
-/* --- RODAPÉ --- */
-footer {
+.btn-comprar {
+    display: inline-block;
+    background-color: #C58380;
+    color: white;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-comprar:hover {
+    background-color: #B3726F;
+}
+
+.filtros-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+/* Botões de filtro combinando com a nova paleta */
+.btn-filtro {
+    background-color: #FDF9F3;
+    border: 1px solid #EAD4CE;
+    color: #6E5A4E;
+    padding: 6px 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.btn-filtro:hover {
+    background-color: #F7ECE4;
+}
+
+.btn-filtro.ativo {
+    background-color: #C58380;
+    color: white;
+    border-color: #C58380;
+}
+
+.cartao-produto.esconder {
+    display: none !important;
+}
+
+main {
+    padding: 0 5%;
+}
+
+.grade-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* Cartões dos produtos com fundo totalmente branco para destacar as fotos */
+.cartao-produto {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #EAD4CE;
+    box-shadow: 0 2px 8px rgba(74, 59, 50, 0.02);
+}
+
+.cartao-produto img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.produto-info {
+    padding: 12px;
+}
+
+.produto-info h3 {
+    font-size: 14px;
+    color: #4A3B32;
+    margin-bottom: 5px;
+}
+
+.artesa {
+    font-size: 11px;
+    color: #8C7364;
+    margin-bottom: 8px;
+}
+
+.preco {
+    font-size: 16px;
+    font-weight: bold;
+    color: #C58380;
+    margin-bottom: 10px;
+}
+
+/* Botão de adicionar ao carrinho em Rosê */
+.btn-adicionar {
+    width: 100%;
+    background-color: white;
+    color: #C58380;
+    border: 1px solid #C58380;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-adicionar:hover {
+    background-color: #C58380;
+    color: white;
+}
+
+/* Bloco do Carrinho combinando com o fundo rosê do cabeçalho */
+.carrinho-container {
+    background-color: #F7ECE4;
+    border: 1px solid #EAD4CE;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 40px auto;
+}
+
+.carrinho-container h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
     text-align: center;
-    padding: 30px;
-    background-color: var(--text-main);
-    color: var(--bg-creme);
+    color: #4A3B32;
+}
+
+.item-no-carrinho {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #EAD4CE;
+    font-size: 13px;
+    color: #4A3B32;
+}
+
+.carrinho-vazio {
+    text-align: center;
+    color: #8C7364;
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+.resumo-carrinho {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.resumo-carrinho h3 {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #4A3B32;
+}
+
+.btn-checkout {
+    background-color: #C58380; /* Mantido verde por ser o padrão do WhatsApp */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Seção institucional e de filosofia em Rosê Claro */
+.causa-secao {
+    padding: 40px 10%;
+    text-align: center;
+    background-color: #F7ECE4;
+    margin-top: 30px;
+    border-top: 1px solid #EAD4CE;
+    border-bottom: 1px solid #EAD4CE;
+}
+
+.causa-secao h2 {
+    color: #4A3B32;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.causa-secao p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #6E5A4E;
+}
+
+.espaco-informativo {
+    padding: 30px 5%;
+    background-color: #FDF9F3;
+}
+
+.grade-informativa {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card-informativo {
+    background-color: #F7ECE4;
+    border: 1px solid #EAD4CE;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    color: #4A3B32;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 140px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.card-informativo:hover {
+    transform: translateY(-2px);
+    border-color: #C58380;
+}
+
+.icone-shopee {
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+.card-informativo h3 {
     font-size: 12px;
+    font-weight: 600;
+}
+
+/* Rodapé em Marrom Escuro para fechar o site com contraste elegante */
+footer {
+    background-color: #4A3B32;
+    color: #D9C3B0;
+    padding: 30px 5% 15px 5%;
     margin-top: 40px;
 }
 
-.footer-secure {
-    margin-top: 8px;
+.footer-conteudo {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 13px;
 }
 
-.footer-secure a {
-    color: var(--rose-accent);
+.footer-bloco h3 {
+    color: #FDF9F3;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.footer-bloco ul {
+    list-style: none;
+}
+
+.footer-bloco li {
+    margin-bottom: 5px;
+}
+
+.footer-bloco a {
+    color: #D9C3B0;
     text-decoration: none;
+    transition: color 0.2s;
 }
 
-/* Responsividade Básica */
-@media (max-width: 900px) {
-    .store-container {
-        grid-template-columns: 1fr;
-    }
-    .cart-container {
-        position: static;
-    }
-    .about-card {
-        flex-direction: column;
-        text-align: center;
-    }
+.footer-bloco a:hover {
+    color: #FDF9F3;
+}
+
+.footer-direitos {
+    text-align: center;
+    border-top: 1px solid #5C4A3E;
+    padding-top: 15px;
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    header { flex-direction: column; gap: 10px; }
+    .grade-informativa { gap: 10px; }
+    .card-informativo { width: 28%; min-width: 100px; }
 }

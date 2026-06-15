@@ -3,91 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dopamina Acessórios</title>
-    <!-- Ícones para Redes Sociais e Carrinho -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Dopamina Acessórios | Bordados & crochê Feito à Mão</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Barra de Segurança Discreta -->
-    <div class="security-bar">
-        <span><i class="fa-solid fa-shield-halved"></i> Ambiente Seguro (Aperte 'ESC' duas vezes para Saída Rápida)</span>
-        <button class="panic-btn" onclick="quickExit()">Encerrar Sessão</button>
+    <!-- BOTÃO FLUTUANTE DE SEGURANÇA (Discreto) -->
+    <button id="botao-panico-flutuante" onclick="saidaRapida()" title="Fechar aba rapidamente">
+        ✕ Sair
+    </button>
+
+    <!-- BARRA DE SEGURANÇA ATIVA (Visual clean no topo) -->
+    <div class="barra-seguranca">
+        <span class="dica-seguranca">Dica de navegação: pressione a tecla <strong>ESC</strong> para fechar rápido</span>
+        <button id="btn-saida-rapida" onclick="saidaRapida()">Saída Rápida</button>
     </div>
 
-    <!-- Cabeçalho Principal -->
-    <header class="main-header">
-        <div class="header-container">
-            <div class="brand-title">DOPAMINA ACESSÓRIOS</div>
-            
-            <!-- Links das Redes Sociais -->
-            <div class="social-links">
-                <a href="https://instagram.com/seu_usuario" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                <a href="https://wa.me/5541998106626" target="_blank" class="social-icon-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-            </div>
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="logo">
+            <h1>Dopamina Acessórios</h1>
+            <span>Peças autorais | Bordados a mão para eternizar  | Ecobags & Crochê</span>
         </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#sobre-nos">Quem sou eu </a></li>
+                <li><a href="https://instagram.com/dopamina_acessorios" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="#guia-informativo">Espaço dela</a></li>
+                <li><a href="#carrinho-secao" class="carrinho-menu">🛒 (<span id="contador-cart">0</span>)</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Filtros por Categoria (Navegação Rápida) -->
-    <nav class="categories-nav">
-        <button class="category-btn active" onclick="filterCategory('todos')">Todos os Produtos</button>
-        <button class="category-btn" onclick="filterCategory('croche')">Crochê & Mesa Posta</button>
-        <button class="category-btn" onclick="filterCategory('maternidade')">Maternidade & Bordados</button>
-        <button class="category-btn" onclick="filterCategory('ecobag')">Ecobags</button>
-    </nav>
-
-    <!-- Layout de Duas Colunas (Como estava antes, excelente para usabilidade) -->
-    <div class="store-container">
-        
-        <!-- Grid de Produtos -->
-        <main class="products-grid" id="productCatalog">
-            <!-- Os produtos serão injetados aqui via JS -->
-        </main>
-
-        <!-- Carrinho de Compras Sempre Visível na Direita -->
-        <aside class="cart-container">
-            <div class="cart-header">
-                <h2><i class="fa-solid fa-bag-shopping"></i> Seu Carrinho</h2>
-                <span class="cart-badge" id="cartCount">0</span>
-            </div>
-            
-            <div class="cart-items" id="cartItems">
-                <p class="empty-cart">Seu carrinho está vazio.</p>
-            </div>
-            
-            <div class="cart-footer">
-                <div class="cart-total-row">
-                    <span>Total:</span>
-                    <span id="cartTotal">R$ 0,00</span>
-                </div>
-                <button class="checkout-btn" onclick="sendToWhatsapp()">
-                    <i class="fa-brands fa-whatsapp"></i> Enviar Pedido via WhatsApp
-                </button>
-            </div>
-        </aside>
-
-    </div>
-
-    <!-- SEÇÃO INFORMATIVA: QUEM SOU EU (Fica elegante no final, sem atrapalhar a compra) -->
-    <section class="about-section">
-        <div class="about-card">
-            <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1610483178766-8092dccbf960?w=500&auto=format&fit=crop&q=80" alt="Ateliê">
-            </div>
-            <div class="about-text">
-                <h3>O Coração por Trás dos Nós ✨</h3>
-                <p>Seja bem-vinda à Dopamina Acessórios. Cada peça nasce de um processo calmo, paciente e feito 100% à mão. Nosso objetivo é trazer o aconchego, a textura e o afeto do artesanato premium direto para o seu estilo e para a sua casa.</p>
-            </div>
+    <!-- BANNER PRINCIPAL (Foco em Vendas) -->
+    <section class="banner" id="home">
+        <div class="banner-conteudo">
+            <h2>Arte feita à mão para transformar o seu estilo </h2>
+            <p>Use o cupom <strong>PRIMEIRACOMPRA</strong> e ganhe 10% OFF em todo o catálogo.</p>
+            <a href="#catalogo" class="btn-comprar">Ver Coleções</a>
         </div>
     </section>
 
-    <!-- Rodapé -->
+    <!-- FILTROS DE CATEGORIA 
+    
+
+    <!-- CATÁLOGO DE PRODUTOS CONTROLANDO AS FOTOS NO HTML -->
+    <main id="catalogo">
+        <div class="grade-produtos">
+            
+            <!-- === COLECÃO CROCHÊ (7 itens) === -->
+            <div class="cartao-produto croche">
+                <img src="imagens/croche1.jpg" alt="Bolsa Crochê Boho Chic">
+                <div class="produto-info">
+                    <h3>Bolsa de Crochê bag</h3>
+                    <p class="artesa">Coleção Outono/Inverno</p>
+                    <p class="preco">R$ 89,90</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Bolsa de Crochê Boho Chic', 149.90)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto croche">
+                <img src="imagens/croche2.jpg" alt="Tapete Oval Algodão Cru">
+                <div class="produto-info">
+                    <h3>Tapete Oval Algodão Cru</h3>
+                    <p class="artesa">Linha Home Decor</p>
+                    <p class="preco">R$ 89,90</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Tapete Oval Algodão Cru', 89.90)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto croche">
+                <img src="imagens/croche3.jpg" alt="Bolsa Baguete Crochê Rosê">
+                <div class="produto-info">
+                    <h3>Bolsa Baguete Crochê Rosê</h3>
+                    <p class="artesa">Edição Limitada</p>
+                    <p class="preco">R$ 110,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Bolsa Baguete Crochê Rosê', 110.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto croche">
+                <img src="imagens/croche4.jpg" alt="Carteira de Mão Clutch Terracota">
+                <div class="produto-info">
+                    <h3>Carteira de Mão Clutch Terracota</h3>
+                    <p class="artesa">Linha Festa</p>
+                    <p class="preco">R$ 75,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Carteira de Mão Clutch Terracota', 75.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto croche">
+                <img src="imagens/croche5.jpg" alt="Kit Trio Cachepôs Organizadores">
+                <div class="produto-info">
+                    <h3>Kit Trio Cachepôs Organizadores</h3>
+                    <p class="artesa">Organização & Estilo</p>
+                    <p class="preco">R$ 59,90</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Kit Trio Cachepôs Organizadores', 59.90)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto croche">
+                <img src="imagens/croche6.jpg" alt="Necessaire Compacta Fios de Malha">
+                <div class="produto-info">
+                    <h3>Necessaire Compacta Fios de Malha</h3>
+                    <p class="artesa">Acessório de Viagem</p>
+                    <p class="preco">R$ 45,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Necessaire Compacta Fios de Malha', 45.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto croche">
+                <img src="imagens/croche7.jpg" alt="Chapéu Bucket Hat Minimalista">
+                <div class="produto-info">
+                    <h3>Chapéu Bucket Hat Minimalista</h3>
+                    <p class="artesa">Moda Urbana</p>
+                    <p class="preco">R$ 69,90</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Chapéu Bucket Hat Minimalista', 69.90)">Comprar</button>
+                </div>
+            </div>
+
+            <!-- === COLECÃO ECOBAGS (7 itens) === -->
+            <div class="cartao-produto ecobags">
+                <img src="imagens/ecobag1.jpg" alt="Ecobag Algodão Cru Minimalista">
+                <div class="produto-info">
+                    <h3>Ecobag Algodão Cru Minimalista</h3>
+                    <p class="artesa">Linha Sustentável</p>
+                    <p class="preco">R$ 39,90</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Ecobag Algodão Cru Minimalista', 39.90)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto ecobags">
+                <img src="imagens/ecobag2.jpg" alt="Ecobag Ilustração Botânica">
+                <div class="produto-info">
+                    <h3>Ecobag Ilustração Botânica</h3>
+                    <p class="artesa">Estamparia Artesanal</p>
+                    <p class="preco">R$ 45,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Ecobag Ilustração Botânica', 45.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto ecobags">
+                <img src="imagens/ecobag3.jpg" alt="Sacola de Lona com Compartimentos">
+                <div class="produto-info">
+                    <h3>Sacola de Lona com Compartimentos</h3>
+                    <p class="artesa">Alta Resistência</p>
+                    <p class="preco">R$ 55,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Sacola de Lona com Compartimentos', 55.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto ecobags">
+                <img src="imagens/ecobag4.jpg" alt="Ecobag Algodão Organic Culture">
+                <div class="produto-info">
+                    <h3>Ecobag Algodão Organic Culture</h3>
+                    <p class="artesa">Estilo Consciente</p>
+                    <p class="preco">R$ 42,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Ecobag Algodão Organic Culture', 42.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto ecobags">
+                <img src="imagens/ecobag5.jpg" alt="Tote Bag Linho Bordada à Mão">
+                <div class="produto-info">
+                    <h3>Tote Bag Linho Bordada à Mão</h3>
+                    <p class="artesa">Acabamento Premium</p>
+                    <p class="preco">R$ 68,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Tote Bag Linho Bordada à Mão', 68.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto ecobags">
+                <img src="imagens/ecobag6.jpg" alt="Necessaire Maquiagem em Lona">
+                <div class="produto-info">
+                    <h3>Necessaire Maquiagem em Lona</h3>
+                    <p class="artesa">Praticidade Diária</p>
+                    <p class="preco">R$ 29,90</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Necessaire Maquiagem em Lona', 29.90)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto ecobags">
+                <img src="imagens/ecobag7.jpg" alt="Sacola de Compras Casual Retrô">
+                <div class="produto-info">
+                    <h3>Sacola de Compras Casual Retrô</h3>
+                    <p class="artesa">Design Funcional</p>
+                    <p class="preco">R$ 48,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Sacola de Compras Casual Retrô', 48.00)">Comprar</button>
+                </div>
+            </div>
+
+            <!-- === COLECÃO BORDADOS (7 itens) === -->
+            <div class="cartao-produto bordados">
+                <img src="imagens/bordado1.jpg" alt="Bastidor Decorativo Linhas Fluídas">
+                <div class="produto-info">
+                    <h3>Bastidor Decorativo Linhas Fluídas</h3>
+                    <p class="artesa">Arte em Fios</p>
+                    <p class="preco">R$ 150,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Bastidor Decorativo Linhas Fluídas', 150.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto bordados">
+                <img src="imagens/bordado2.jpg" alt="Guirlanda de Algodão Bordada">
+                <div class="produto-info">
+                    <h3>Guirlanda de Algodão Bordada</h3>
+                    <p class="artesa">Decoração Infantil/Casal</p>
+                    <p class="preco">R$ 180,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Guirlanda de Algodão Bordada', 180.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto bordados">
+                <img src="imagens/bordado3.jpg" alt="Bastidor Temático Floral Rosê">
+                <div class="produto-info">
+                    <h3>Bastidor Temático Floral Rosê</h3>
+                    <p class="artesa">Artesanato Fino</p>
+                    <p class="preco">R$ 85,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Bastidor Temático Floral Rosê', 85.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto bordados">
+                <img src="imagens/bordado4.jpg" alt="Quadro Bastidor Tipográfico Comfort">
+                <div class="produto-info">
+                    <h3>Quadro Bastidor Tipográfico Comfort</h3>
+                    <p class="artesa">Frases Motivacionais</p>
+                    <p class="preco">R$ 75,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Quadro Bastidor Tipográfico Comfort', 75.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto bordados">
+                <img src="imagens/bordado5.jpg" alt="Quadro de Tecido Silhueta Botânica">
+                <div class="produto-info">
+                    <h3>Quadro de Tecido Silhueta Botânica</h3>
+                    <p class="artesa">Conceito Minimalista</p>
+                    <p class="preco">R$ 95,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Quadro de Tecido Silhueta Botânica', 95.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto bordados">
+                <img src="imagens/bordado6.jpg" alt="Amuleto Colar Mini Bastidor">
+                <div class="produto-info">
+                    <h3>Amuleto Colar Mini Bastidor</h3>
+                    <p class="artesa">Acessório de Moda</p>
+                    <p class="preco">R$ 38,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Amuleto Colar Mini Bastidor', 38.00)">Comprar</button>
+                </div>
+            </div>
+
+            <div class="cartao-produto bordados">
+                <img src="imagens/bordado7.jpg" alt="Chaveiro Artesanal Bordado Inicial">
+                <div class="produto-info">
+                    <h3>Chaveiro Artesanal Bordado Inicial</h3>
+                    <p class="artesa">Opção para Presente</p>
+                    <p class="preco">R$ 25,00</p>
+                    <button class="btn-adicionar" onclick="adicionarAoCarrinho('Chaveiro Artesanal Bordado Inicial', 25.00)">Comprar</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- SEÇÃO DO CARRINHO -->
+    <section id="carrinho-secao" class="carrinho-container">
+        <h2>Seu Carrinho de Compras</h2>
+        <div id="itens-carrinho">
+            <p class="carrinho-vazio">Seu carrinho está vazio.</p>
+        </div>
+        <div class="resumo-carrinho">
+            <h3>Total: R$ <span id="total-carrinho">0,00</span></h3>
+            <button class="btn-checkout" onclick="simularCheckout()">💬 Enviar Pedido via WhatsApp</button>
+        </div>
+    </section>
+
+    <!-- SOBRE NÓS -->
+    <section id="sobre-nos" class="causa-secao">
+        <h2>Quem sou eu</h2>
+        <p>Olá, meu nome é Sara Letícia! 
+Sou graduada em tecnologia e artesã por vocação apaixonada pelo feito à mão. Unindo técnica e sensibilidade, crio bordados exclusivos que transformam memórias em arte. Seja bem-vinda(o)  ao meu catálogo, onde cada ponto é pensado para eternizar sua história.
+ </p>
+    </section>
+
+    <!-- GUIA DE DIREITOS SIMPLIFICADO -->
+    <section id="guia-informativo" class="espaco-informativo">
+        <div class="grade-informativa">
+            <a href="https://www.institutomariadapenha.org.br/o-instituto/lei-maria-da-penha.html" target="_blank" rel="noopener noreferrer" class="card-informativo">
+                <span class="icone-shopee">⚖️</span>
+                <h3>Lei Maria da Penha</h3>
+            </a>
+
+            <a href="https://www.gov.br/mulheres/pt-br" target="_blank" rel="noopener noreferrer" class="card-informativo">
+                <span class="icone-shopee">📞</span>
+                <h3>Central Ligue 180</h3>
+            </a>
+
+            <a href="https://www.institutomariadapenha.org.br/" target="_blank" rel="noopener noreferrer" class="card-informativo">
+                <span class="icone-shopee">🗺️</span>
+                <h3>Rede de apoio</h3>
+            </a>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
     <footer>
-        <p>&copy; 2026 Dopamina Acessórios. Todos os direitos reservados.</p>
-        <div class="footer-secure">
-            <a href="https://www.gov.br/mulheres/pt-br/acesso-a-informacao/acoes-e-programas/ligue-180" target="_blank"><i class="fa-solid fa-phone"></i> Ligue 180</a> | 
-            <a href="https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm" target="_blank">Lei Maria da Penha</a>
+        <div class="footer-conteudo">
+            <div class="footer-bloco">
+                <h3>Dopamina Acessórios</h3>
+                <p>Estilo autoral, consumo consciente e design feito por mulher.</p>
+            </div>
+            <div class="footer-bloco">
+                <h3>Informações & Redes</h3>
+                <ul>
+                    <li><a href="#">Políticas de Entrega</a></li>
+                    <li><a href="#">Termos de Uso & LGPD</a></li>
+                    <li><a href="https://instagram.com/dopamina_acessorios" target="_blank" rel="noopener noreferrer">📸 Siga no Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-direitos">
+            <p>&copy; 2026 Dopamina Acessórios. Todos os direitos reservados.</p>
         </div>
     </footer>
 
